@@ -1,0 +1,37 @@
+{
+  "name": "moviestracker",
+  "version": "1.0.0",
+  "description": "Manage users and save favorites movies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./index.js",
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodsof/movietracker-servidor.git"
+  },
+  "keywords": [
+    "movies"
+  ],
+  "author": "sofia rodriguez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rodsof/movietracker-servidor/issues"
+  },
+  "homepage": "https://github.com/rodsof/movietracker-servidor#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.23",
+    "nodemon": "^2.0.4"
+  },
+  "engines": {
+    "node": "12.16.1"
+  }
+}
