@@ -34,7 +34,7 @@ exports.autenticateUser = async (req, res) => {
         };
 
         //  sign JWT
-        jwt.sign(payload, process.env.WORD, {
+        jwt.sign(payload, process.env.SECRET, {
             expiresIn: 3600 // 1 hora
         }, (error, token) => {
             if(error) throw error;
@@ -44,7 +44,7 @@ exports.autenticateUser = async (req, res) => {
         });
 
     } catch (error) {
-        console.log(error);
+        res.json({ msg: 'There was an error' });
     }
 }
 

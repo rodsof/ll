@@ -41,6 +41,7 @@ exports.createUser = async (req, res) => {
         };
 
         // sign el JWT
+        console.log(process.env.SECRET);
         jwt.sign(payload, process.env.SECRET, {
             expiresIn: 3600 // 1 hora
         }, (error, token) => {

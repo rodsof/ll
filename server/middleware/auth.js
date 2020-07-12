@@ -12,7 +12,7 @@ module.exports = function(req, res, next) {
     // validar el token
 
     try {
-        const cifrado = jwt.verify(token, process.env.WORD);
+        const cifrado = jwt.verify(token, process.env.SECRET);
         req.user = cifrado.user;
         next();
     } catch (error) {
