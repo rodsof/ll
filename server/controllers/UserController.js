@@ -57,3 +57,8 @@ exports.createUser = async (req, res) => {
         res.status(400).send('There was an error');
     }
 }
+
+exports.getUsers= async (req, res) => {
+    let users = await User.find();
+    return res.json(users);
+}
