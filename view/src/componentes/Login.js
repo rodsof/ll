@@ -1,9 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Link, makeStyles, Container, Checkbox, Grid, Box, Typography, Button, FormControlLabel, TextField, CssBaseline, Avatar, CircularProgress } from '@material-ui/core';
+import { Link, makeStyles, Container, Checkbox, Grid, Typography, Button, FormControlLabel, TextField, CssBaseline, Avatar } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import AuthContext from '../context/auth/AuthContext';
 import Alert from '@material-ui/lab/Alert';
 import MainHeader from './MainHeader';
+
 const useStyles = makeStyles((theme) => ({
     paper: {
       marginTop: theme.spacing(8),
@@ -29,8 +30,8 @@ const classes= useStyles();
 
     const authContext = useContext(AuthContext);
     const { message, autenticated, login, spinner } = authContext;
-
-      // En caso de que el password o usuario no exista
+    
+      // if password or user doesn't exist
       useEffect(() => {
         if(autenticated && !spinner) {
             props.history.push('/home');
@@ -54,10 +55,10 @@ const classes= useStyles();
         })
     }
 
-    // Cuando el usuario quiere iniciar sesión
+    // when login
     const onSubmit = e => {
         e.preventDefault();
-        // Pasarlo al action
+        // send to action
         login({ email, password });
     }
 
@@ -121,14 +122,14 @@ const classes= useStyles();
             Sign In
           </Button>
           <Grid container>
-            <Grid item xs>
+            {/* <Grid item xs>
               <Link href="#" variant="body2">
                 Forgot password?
               </Link>
-            </Grid>
+            </Grid> */}
             <Grid item>
               <Link href="/signup" variant="body2">
-                {"Don't have an account? Sign Up"}
+                Don't have an account? Sign Up
               </Link>
             </Grid>
           </Grid>

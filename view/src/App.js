@@ -10,6 +10,7 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import SignUp from "./componentes/SignUp";
 import LayoutHome from "./componentes/LayoutHome";
 import PrivateRoute from "./componentes/routes/PrivateRoute";
+import LayoutSaved from "./componentes/LayoutSaved";
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -38,6 +39,7 @@ function App() {
               <Route exact path="/" component={Login} />
               <Route exact path="/signup" component={SignUp} />
               <PrivateRoute exact path="/home" component={LayoutHome} />
+              <PrivateRoute exact path="/saved" component={LayoutSaved} />
             </Switch>
           </Router>
         </MoviesProvider>

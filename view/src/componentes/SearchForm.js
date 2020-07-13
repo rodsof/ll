@@ -5,7 +5,6 @@ import {
   makeStyles,
   MenuItem,
   Button,
-  Grid,
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -14,6 +13,10 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(2),
       width: "25ch"
     },
+    ['@media (max-width:780px)']: { // eslint-disable-line no-useless-computed-key
+      flexDirection: "column"
+    }
+  ,
     margin: "2rem",
     display: "flex",
     flexDirection: "row",
@@ -64,6 +67,7 @@ const Formulario = () => {
         select
         onChange={getMovies}
         required
+        value="All"
       >
         <MenuItem value="All">-- All--</MenuItem>
         <MenuItem value="movie">Movies</MenuItem>

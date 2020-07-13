@@ -5,7 +5,6 @@ import {
   Container,
   Checkbox,
   Grid,
-  Box,
   Typography,
   Button,
   FormControlLabel,
@@ -70,7 +69,7 @@ const SignUp = (props) => {
     });
   };
 
-  // Cuando el usuario quiere iniciar sesión
+  // when login
   const onSubmit = (e) => {
     e.preventDefault();
     if(password !== confirm){

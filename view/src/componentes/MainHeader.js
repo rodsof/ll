@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React from "react";
 import {
   AppBar,
   IconButton,
@@ -7,7 +7,6 @@ import {
   Typography,
   makeStyles,
 } from "@material-ui/core";
-import AuthContext from "../context/auth/AuthContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,10 +28,6 @@ const useStyles = makeStyles((theme) => ({
 const MainHeader = () => {
   const classes = useStyles();
 
-  // Extraer la información de autenticación
-  const authContext = useContext(AuthContext);
-  const { user, autenticatedUser, logout } = authContext;
-
 
   return (
     <AppBar position="static">
@@ -44,7 +39,7 @@ const MainHeader = () => {
           aria-label="menu"
           href="/"
         >
-          {<img src="/logo.png" className={classes.image} />}
+          {<img src="/logo.png" className={classes.image} alt="logo"/>}
         </IconButton>
         <Typography variant="h6" className={classes.title}>
           Movies and TV shows
