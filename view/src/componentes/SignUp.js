@@ -16,6 +16,7 @@ import {
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import AuthContext from "../context/auth/AuthContext";
 import Alert from "@material-ui/lab/Alert";
+import MainHeader from "./MainHeader";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -41,26 +42,26 @@ const SignUp = (props) => {
   const classes = useStyles();
 
   const authContext = useContext(AuthContext);
-  const { message, autenticated, login } = authContext;
-  console.log(props);
+  const { message, autenticated, createUser, spinner } = authContext;
 
-  // En caso de que el password o usuario no exista
   useEffect(() => {
-    if (autenticated) {
-      console.log(props);
-      props.history.push("/");
+    if (autenticated && !spinner) {
+      props.history.push("/home");
     }
     // eslint-disable-next-line
   }, [message, autenticated, props.history]);
 
-  // State para iniciar sesión
+  // state to sign up
   const [user, saveUser] = useState({
+    name: "",
     email: "",
     password: "",
+    confirm: "",
+    error: ""
   });
 
-  // extraer de usuario
-  const { email, password } = user;
+  // extract from user
+  const { name, email, password, confirm, error } = user;
 
   const onChange = (e) => {
     saveUser({
@@ -72,11 +73,20 @@ const SignUp = (props) => {
   // Cuando el usuario quiere iniciar sesión
   const onSubmit = (e) => {
     e.preventDefault();
-    // Pasarlo al action
-    login({ email, password });
+    if(password !== confirm){
+        saveUser({
+          ...user,
+          error: "There is an error, passwords must be = "
+        })
+        return;
+    }
+    // to action
+    createUser({ name, email, password });
   };
 
   return (
+    <>
+    <MainHeader />
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
@@ -122,11 +132,24 @@ const SignUp = (props) => {
             autoComplete="current-password"
             onChange={onChange}
           />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="confirm"
+            label="Repeat Password"
+            type="password"
+            id="confirm"
+            onChange={onChange}
+          />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
-          {message ? <Alert severity="error">{message.msg}</Alert> : null}
+                    {message? <Alert severity="error">{message.msg}</Alert> : null}
+
+          {error ? <Alert severity="error">{error}</Alert> : null}
           <Button
             type="submit"
             fullWidth
@@ -146,6 +169,7 @@ const SignUp = (props) => {
         </form>
       </div>
     </Container>
+    </>
   );
 };
 export default SignUp;

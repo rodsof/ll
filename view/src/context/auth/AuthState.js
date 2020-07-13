@@ -29,7 +29,6 @@ const AuthState = props => {
         try {
 
             const response = await axiosClient.post('/api/users', data);
-            console.log(response.data);
 
             dispatch({
                 type: REGISTERED,
@@ -42,6 +41,7 @@ const AuthState = props => {
             // console.log(error.response.data.msg);
             const alert = {
                 msg: error.response.data.msg,
+                cat: "alert"
             }
 
             dispatch({
@@ -88,6 +88,7 @@ const AuthState = props => {
         } catch (error) {
             const alert = {
                 msg: error.response.data.msg,
+                cat: "alert"
             }
 
             dispatch({

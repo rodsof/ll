@@ -28,7 +28,6 @@ const MoviesProvider = (props) => {
 
                 const result = await axios.get(url);
 
-                console.log(result.data.Search);
                 saveMovies(result.data.Search);
             }
 

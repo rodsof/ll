@@ -33,7 +33,7 @@ export default (state, action) => {
                 ...state,
                 token: null,
                 user: null,
-                autenticated: null,
+                autenticated: false,
                 message: action.payload, 
                 spinner: false
             }

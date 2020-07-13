@@ -43,7 +43,6 @@ const Formulario = () => {
   return (
     <form
       className={classes.root}
-      autoComplete="on"
       onSubmit={(e) => {
         e.preventDefault();
         searchMovies(search);
@@ -63,7 +62,6 @@ const Formulario = () => {
         name="type"
         label="Type"
         select
-        helperText="Please select a type"
         onChange={getMovies}
         required
       >

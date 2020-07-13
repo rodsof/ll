@@ -8,7 +8,6 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import AuthContext from "../context/auth/AuthContext";
-import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,12 +26,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = (props) => {
+const MainHeader = () => {
   const classes = useStyles();
 
   // Extraer la información de autenticación
   const authContext = useContext(AuthContext);
-  const { logout } = authContext;
+  const { user, autenticatedUser, logout } = authContext;
 
 
   return (
@@ -50,12 +49,14 @@ const Header = (props) => {
         <Typography variant="h6" className={classes.title}>
           Movies and TV shows
         </Typography>
-          <Button color="inherit" onClick={ () => logout()}>
-            LOG OUT
+
+          <Button color="inherit" href="/signup">
+            SIGN UP
           </Button>
+  
       </Toolbar>
     </AppBar>
   );
 };
 
-export default Header;
+export default MainHeader;
