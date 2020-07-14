@@ -73,7 +73,7 @@ const Movie = ({ movie }) => {
     }
   };
   return (
-    <Grid item xs={4}>
+    <Grid item xs={12} sm={6} md={4}>
       <Card className={classes.root}>
         <CardHeader
           avatar={
@@ -105,11 +105,14 @@ const Movie = ({ movie }) => {
                 <span>Seasons: </span> {movie.totalSeasons} <br />
               </p>
             ) : null}
-            {movie.Website ? (
-              <p>
+            {movie.Available ? (
+              <div>
                 <span>Where to watch? </span>
-                {movie.Website}{" "}
-              </p>
+                {movie.Available.map( (location ,index )=> 
+                  <p key={index}> {location}</p>
+                    // <img src={location.icon} alt={location.displayName} />
+                  )}
+              </div>
             ) : null}
           </Typography>
         </CardContent>
@@ -124,7 +127,7 @@ const Movie = ({ movie }) => {
               setFavorite(!favorite)
             }}
           >
-            <FavoriteIcon color={favorite ? "secondary" : "primary"} />
+            <FavoriteIcon color={favorite ? "secondary" : "inherit"} />
           </IconButton>
         </CardActions>
       </Card>
